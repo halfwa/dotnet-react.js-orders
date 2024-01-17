@@ -9,7 +9,6 @@ namespace OrderCreator.Core.Models
     public class Order
     {
         public const int MAX_ORDER_WEIGHT = 1000;
-        public const int MIN_ORDER_WEIGHT = 0;
 
         private Order(
             Guid id,
@@ -49,9 +48,9 @@ namespace OrderCreator.Core.Models
         {
             var error = string.Empty;
 
-            if ( weight <= MIN_ORDER_WEIGHT && weight > MAX_ORDER_WEIGHT)
+            if ( weight <= 0 || weight > MAX_ORDER_WEIGHT)
             {
-                error = "Weight of order can not be 0 or more then 1000";
+                error = "Weight of order can not be less then 0 or more then 1000";
             }
 
             var order = new Order(id, fromCity, fromAddress, toCity, toAddress, weight, pickupDate);
