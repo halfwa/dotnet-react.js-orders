@@ -20,13 +20,24 @@ namespace OrderCreator.API
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<OrderCreatorDbContext>(
-                options =>
+                opt =>
                 {
-                    options.UseNpgsql(builder.Configuration.GetConnectionString("OrderCreatorDbContext"));
+                    opt.UseNpgsql(builder.Configuration.GetConnectionString("OrderCreatorDbContext"));
                 });
 
             builder.Services.AddScoped<IOrdersService, OrdersService>();
             builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
+
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy("reactApp", builder => 
+                {
+                    builder.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()   
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
 
             var app = builder.Build();
 
@@ -43,6 +54,8 @@ namespace OrderCreator.API
 
 
             app.MapControllers();
+
+            app.UseCors("reactApp");
 
             app.Run();
         }

@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.API", "OrderCr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.Core", "..\OrderCreator.Core\OrderCreator.Core.csproj", "{A0930E53-CC03-494A-915A-B64A4669932D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderCreator.DataAccess", "..\OrderCreator.DataAccess\OrderCreator.DataAccess.csproj", "{D39FFA13-A70B-4474-9C02-AE65189CBCA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.DataAccess", "..\OrderCreator.DataAccess\OrderCreator.DataAccess.csproj", "{D39FFA13-A70B-4474-9C02-AE65189CBCA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderCreator.Application", "..\OrderCreator.Application\OrderCreator.Application.csproj", "{9362BA80-F6A2-4634-A3C8-C210430BE929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.Application", "..\OrderCreator.Application\OrderCreator.Application.csproj", "{9362BA80-F6A2-4634-A3C8-C210430BE929}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

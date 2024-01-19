@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderCreator.Core.Models
 {
-    public class Order
+    public class Order  
     {
         public const int MAX_ORDER_WEIGHT = 1000;
 
