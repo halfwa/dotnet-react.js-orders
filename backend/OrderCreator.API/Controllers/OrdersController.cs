@@ -7,24 +7,32 @@ namespace OrderCreator.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController : ControllerBase
+    public class OrdersController(IOrdersService _ordersService) : ControllerBase
     {
-        private readonly IOrdersService _ordersService;
-        public OrdersController(IOrdersService ordersService)
-        {
-            _ordersService = ordersService;
-        }
-
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetOrderById(Guid id, CancellationToken cancellationToken)
         {
-            return Ok(await _ordersService.GetOrderById(id, cancellationToken));
+            var orders = await _ordersService.GetOrderById(id, cancellationToken);
+
+            if (orders is null) 
+            {
+                return NoContent();
+            }
+
+            return Ok(orders);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetOrders(CancellationToken cancellationToken)
         {
-            return Ok(await _ordersService.GetAllOrders(cancellationToken));
+            var order = await _ordersService.GetAllOrders(cancellationToken);
+
+            if (order is null)
+            {
+                return NoContent();
+            }
+
+            return Ok(order);
         }
 
         [HttpPost]
@@ -46,7 +54,12 @@ namespace OrderCreator.API.Controllers
 
             var orderId = await _ordersService.CreateOrder(order, cancellationToken);
 
-            return Ok(orderId);
+            if (string.IsNullOrEmpty(orderId.ToString()))
+            {
+                return StatusCode(500, "Internal error");
+            }
+
+            return CreatedAtAction(nameof(GetOrderById), new { Id = orderId}, order);
         }
 
         [HttpPut("{id:guid}")]
@@ -69,13 +82,25 @@ namespace OrderCreator.API.Controllers
 
             var orderId = await _ordersService.UpdateOrder(id, order, cancellationToken);
 
-            return Ok(orderId);
+            if (string.IsNullOrEmpty(orderId.ToString()))
+            {
+                return StatusCode(500, "Internal error");
+            }
+
+            return Ok("Successfully updated!");
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteOrder(Guid id, CancellationToken cancellationToken)
         {
-            return Ok(await _ordersService.DeleteOrder(id, cancellationToken));
+            var orderId = await _ordersService.DeleteOrder(id, cancellationToken);
+
+            if (string.IsNullOrEmpty(orderId.ToString()))
+            {
+                return StatusCode(500, "Internal error");
+            }
+
+            return NoContent();
         }
     }
 }

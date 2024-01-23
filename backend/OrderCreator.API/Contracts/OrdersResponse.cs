@@ -7,5 +7,6 @@
         string ToCity,
         string ToAddress,
         double Weight,
-        DateTime PickupDate);
+        DateTime PickupDate
+        );
 }

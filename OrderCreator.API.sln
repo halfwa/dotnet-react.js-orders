@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.API", "OrderCreator.API.csproj", "{FE989C82-8FDA-48DD-87ED-D7A5AA0CA6A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.API", "backend\OrderCreator.Api\OrderCreator.API.csproj", "{FE989C82-8FDA-48DD-87ED-D7A5AA0CA6A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.Core", "..\OrderCreator.Core\OrderCreator.Core.csproj", "{A0930E53-CC03-494A-915A-B64A4669932D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.Core", "backend\OrderCreator.Core\OrderCreator.Core.csproj", "{A0930E53-CC03-494A-915A-B64A4669932D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.DataAccess", "..\OrderCreator.DataAccess\OrderCreator.DataAccess.csproj", "{D39FFA13-A70B-4474-9C02-AE65189CBCA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.DataAccess", "backend\OrderCreator.DataAccess\OrderCreator.DataAccess.csproj", "{D39FFA13-A70B-4474-9C02-AE65189CBCA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.Application", "..\OrderCreator.Application\OrderCreator.Application.csproj", "{9362BA80-F6A2-4634-A3C8-C210430BE929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderCreator.Application", "backend\OrderCreator.Application\OrderCreator.Application.csproj", "{9362BA80-F6A2-4634-A3C8-C210430BE929}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{86EBB073-C4B7-42A7-ACF6-99B3C9024396}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9362BA80-F6A2-4634-A3C8-C210430BE929}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9362BA80-F6A2-4634-A3C8-C210430BE929}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9362BA80-F6A2-4634-A3C8-C210430BE929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86EBB073-C4B7-42A7-ACF6-99B3C9024396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86EBB073-C4B7-42A7-ACF6-99B3C9024396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86EBB073-C4B7-42A7-ACF6-99B3C9024396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86EBB073-C4B7-42A7-ACF6-99B3C9024396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ using OrderCreator.DataAccess;
 namespace OrderCreator.DataAccess.Migrations
 {
     [DbContext(typeof(OrderCreatorDbContext))]
-    [Migration("20240116235252_initial-migration")]
+    [Migration("20240122221558_initial-migration")]
     partial class initialmigration
     {
         /// <inheritdoc />

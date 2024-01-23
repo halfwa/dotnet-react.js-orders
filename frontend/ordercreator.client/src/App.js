@@ -5,12 +5,12 @@ import OrdersMainForm from './components/orders/OrdersMainForm';
 import CreateOrdersForm from './components/orders/CreateOrdersForm';
 
 function App() {
+
   return (  
     <Router>
         <Routes>
-          <Route path="/" element={ <Navigate to="/orders" replace />} />
-          <Route path="/orders" element={ <OrdersMainForm/> }/>
-          <Route path="/orders/create" element={ <CreateOrdersForm/> }/>
+          <Route path="/" element={ <OrdersMainForm/> }/>
+          <Route path="/orders" element={ <CreateOrdersForm/> }/>
         </Routes>
     </Router>
   );

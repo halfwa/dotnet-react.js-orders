@@ -1,23 +1,10 @@
 ﻿using OrderCreator.Core.Abstractions;
 using OrderCreator.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace OrderCreator.Application.Services
 {
-    public class OrdersService : IOrdersService
+    public class OrdersService(IOrdersRepository _ordersRepository) : IOrdersService
     {
-        private readonly IOrdersRepository _ordersRepository;
-
-        public OrdersService(IOrdersRepository ordersRepository)
-        {
-            _ordersRepository = ordersRepository;
-        }
-
         public async Task<List<Order>> GetAllOrders(CancellationToken cancellationToken)
         {
             return await _ordersRepository.Get(cancellationToken);

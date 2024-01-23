@@ -1,0 +1,46 @@
+version: "3.4"
+
+networks:
+  dev:
+    driver: 
+        bridge
+
+services:
+
+  proxy: 
+    image: nginx:mainline
+    depends_on:
+          - backend
+    networks:
+          - dev
+
+  backend: 
+    container_name: orders-api
+    build:
+      context: .
+      dockerfile:  backend/OrderCreator.API/Dockerfile
+    environment:
+        - ConnectionStrings__DefaultConnection=User ID =postgres;Password=1234;Server=postgres_db;Port=5432;Database=postgres;Pooling=true;
+    depends_on:
+      - postgres_db
+    networks:
+          - dev
+
+  client:
+    container_name: orders-client
+    build:
+      context: ./frontend/ordercreator.client
+      dockerfile: Dockerfile
+    networks:
+          - dev
+
+  postgres_db:
+    container_name: orders-postgres
+    image: postgres:latest
+    environment:
+        POSTGRES_PASSWORD: 1234
+        POSTGRES_USER: postgres
+        POSTGRES_DB: postgres
+    networks:
+        - dev
+       

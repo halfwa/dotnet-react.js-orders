@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrderCreator.DataAccess.Configurations;
 using OrderCreator.DataAccess.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderCreator.DataAccess
 {
@@ -14,7 +9,10 @@ namespace OrderCreator.DataAccess
         public DbSet<OrderEntity> Orders { get; set; }
 
         public OrderCreatorDbContext(DbContextOptions<OrderCreatorDbContext> options)
-            : base(options) { }
+            : base(options) 
+        { 
+            Database.EnsureCreated();
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

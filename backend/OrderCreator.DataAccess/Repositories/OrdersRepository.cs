@@ -5,15 +5,8 @@ using OrderCreator.DataAccess.Entities;
 
 namespace OrderCreator.DataAccess.Repositories
 {
-    public sealed class OrdersRepository : IOrdersRepository
+    public sealed class OrdersRepository(OrderCreatorDbContext _context) : IOrdersRepository
     {
-        private readonly OrderCreatorDbContext _context;
-
-        public OrdersRepository(OrderCreatorDbContext context)
-        {
-            _context = context;
-        }
-
         public async Task<Order> GetById(Guid id, CancellationToken cancellationToken)
         {
             var orderEntity = await _context.Orders

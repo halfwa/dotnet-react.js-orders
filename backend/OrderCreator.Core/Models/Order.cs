@@ -47,7 +47,7 @@
                 error = "Weight of order can not be less then 0 or more then 1000";
             }
 
-            var order = new Order(id, fromCity, fromAddress, toCity, toAddress, weight, pickupDate);
+            var order = new Order(id, fromCity, fromAddress, toCity, toAddress, weight, pickupDate.ToUniversalTime());
 
             return (order, error);
         }

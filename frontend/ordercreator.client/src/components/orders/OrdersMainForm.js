@@ -1,30 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {Table, Button, Flex, Typography } from 'antd';
 import ShowOrdersModal from './ShowOrdersModal';
-
-
-const API_URL = "https://localhost:7257/api";
+import { getAllOrders } from '../../services/orders';
 
 const OrdersMainForm = () => {
 
   const navigate = useNavigate();
-
-  const [data, setData] = useState([]);
-
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(API_URL + "/orders");
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+    const getOrders = async () => {
+      const orders = await getAllOrders();
+      setOrders(orders);
     };
 
-    fetchData();
+    getOrders();
   }, []);
 
 
@@ -75,7 +66,7 @@ const OrdersMainForm = () => {
               title={() => title}
               pagination={{ pageSize: 8 }}
               columns={columns}
-              dataSource={data.map((item) => ({
+              dataSource={orders.map((item) => ({
                 id: item.id,
                 from: item.fromCity + ", " + item.fromAddress,
                 to: item.toCity + ", " + item.toAddress,
@@ -95,7 +86,7 @@ const OrdersMainForm = () => {
           <Button 
           style={{ marginLeft: 'auto'}}
           type="primary"
-          onClick={() => navigate('/orders/create')}
+          onClick={() => navigate('/orders')}
           >
             Создать новый заказ</Button> 
         </Flex>
