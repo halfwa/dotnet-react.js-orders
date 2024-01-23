@@ -9,13 +9,13 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["backend/OrderCreator.Api/OrderCreator.API.csproj", "backend/OrderCreator.Api/"]
+COPY ["backend/OrderCreator.API/OrderCreator.API.csproj", "backend/OrderCreator.API/"]
 COPY ["backend/OrderCreator.Application/OrderCreator.Application.csproj", "backend/OrderCreator.Application/"]
 COPY ["backend/OrderCreator.Core/OrderCreator.Core.csproj", "backend/OrderCreator.Core/"]
 COPY ["backend/OrderCreator.DataAccess/OrderCreator.DataAccess.csproj", "backend/OrderCreator.DataAccess/"]
-RUN dotnet restore "./backend/OrderCreator.Api/./OrderCreator.API.csproj"
+RUN dotnet restore "./backend/OrderCreator.API/./OrderCreator.API.csproj"
 COPY . .
-WORKDIR "/src/backend/OrderCreator.Api"
+WORKDIR "/src/backend/OrderCreator.API"
 RUN dotnet build "./OrderCreator.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
