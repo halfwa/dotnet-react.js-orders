@@ -1,6 +1,6 @@
 # Быстрый старт
 
-Перейдите в корневую директории и исполните команду docker-compose, или в vs studio запустите проект через docker-compose плеер
+Перейдите в корневую директорию и исполните команду docker-compose, или в vs studio запустите проект через docker-compose плеер
 ```powershell
 docker-compose up
 ```
