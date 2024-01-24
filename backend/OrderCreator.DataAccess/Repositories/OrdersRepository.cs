@@ -6,11 +6,19 @@ using OrderCreator.DataAccess.Entities;
 
 namespace OrderCreator.DataAccess.Repositories
 {
-    public sealed class OrdersRepository(
-        OrderCreatorDbContext _context,
-        ILogger _logger
-        ) : IOrdersRepository
+    public sealed class OrdersRepository: IOrdersRepository
     {
+        private readonly OrderCreatorDbContext _context;
+        private readonly ILogger<OrdersRepository> _logger;
+
+        public OrdersRepository(
+            OrderCreatorDbContext context,
+            ILogger<OrdersRepository> logger)
+        {
+            _context = context;
+            _logger = logger; 
+        }
+
         public async Task<Order> GetById(Guid id, CancellationToken cancellationToken)
         {
             try

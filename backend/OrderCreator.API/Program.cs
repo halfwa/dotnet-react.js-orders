@@ -1,3 +1,4 @@
+using OrderCreator.Application;
 using OrderCreator.DataAccess;
 
 namespace OrderCreator.API;
@@ -36,6 +37,7 @@ public class Program
         app.UseAuthorization();
         app.MapControllers();
         app.UseCors("reactApp");
+        app.UseExceptionHandlerMiddleware();
 
         PrepDb.PrepPopulation(app);
         app.Run();
